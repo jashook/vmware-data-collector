@@ -1,0 +1,1 @@
+sudo ./vm_driver.py -v /home/jarret/vmware/Windows\ 7\ x64/ -d /home/jarret/Virtual\ Machines/ -es entry.py -s on_machine/visit_site.py -c 1 -con 20 -urls urls.txt -gui n -ss n -collection /media/hdd0/Virtual\ Machines/collected/
