@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/tmrepo/!svn/ver/631/proj/vm/data/shorteners
+END
+redirectedurls.txt
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/tmrepo/!svn/ver/389/proj/vm/data/shorteners/redirectedurls.txt
+END
+timedouturls.txt
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/tmrepo/!svn/ver/389/proj/vm/data/shorteners/timedouturls.txt
+END
+checklist.py
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/tmrepo/!svn/ver/389/proj/vm/data/shorteners/checklist.py
+END
+shortUrls.txt
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/tmrepo/!svn/ver/631/proj/vm/data/shorteners/shortUrls.txt
+END
+urls.txt
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/tmrepo/!svn/ver/389/proj/vm/data/shorteners/urls.txt
+END
+sites.txt
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/tmrepo/!svn/ver/402/proj/vm/data/shorteners/sites.txt
+END
+Sites2.txt.ods
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/tmrepo/!svn/ver/410/proj/vm/data/shorteners/Sites2.txt.ods
+END
+processedurls.txt
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/tmrepo/!svn/ver/389/proj/vm/data/shorteners/processedurls.txt
+END
+processurls.py
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/tmrepo/!svn/ver/389/proj/vm/data/shorteners/processurls.py
+END
+goodurls.txt
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/tmrepo/!svn/ver/402/proj/vm/data/shorteners/goodurls.txt
+END
+tweetUrls.txt
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/tmrepo/!svn/ver/431/proj/vm/data/shorteners/tweetUrls.txt
+END

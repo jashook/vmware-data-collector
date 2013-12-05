@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>083fdb57-389e-4218-873c-6b2ec6d15477</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>vm_driver.py</StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>C:\Users\Jarret\Source\Repos\vmware-data-collector\rsch\rsch\</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <Name>rsch</Name>
+    <RootNamespace>rsch</RootNamespace>
+    <IsWindowsApplication>False</IsWindowsApplication>
+    <LaunchProvider>Standard Python launcher</LaunchProvider>
+    <CommandLineArguments />
+    <InterpreterPath />
+    <InterpreterArguments>-v "D:\Windows 7 x64" -d "D:\Virtual Machines\" -es entry.py -s on_machine\visit_site.py -c 1 -con 20 -urls "D:\Virtual Machines\urls.txt" -gui n -ss n -collection "D:\Virtual Machines\collected\"</InterpreterArguments>
+    <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="data\shorteners\checklist.py" />
+    <Compile Include="data\shorteners\processurls.py" />
+    <Compile Include="entry.py" />
+    <Compile Include="heavy_thread.py" />
+    <Compile Include="ht_test.py" />
+    <Compile Include="on_machine\visit_site.py" />
+    <Compile Include="scripts\selenium_driver.py" />
+    <Compile Include="ss_remove\ss_remove.py" />
+    <Compile Include="vm.py" />
+    <Compile Include="vm_driver.py" />
+    <Compile Include="vm_util.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="data\" />
+    <Folder Include="data\.svn\" />
+    <Folder Include="data\shorteners\" />
+    <Folder Include="data\shorteners\.svn\" />
+    <Folder Include="data\shorteners\.svn\prop-base\" />
+    <Folder Include="data\shorteners\.svn\text-base\" />
+    <Folder Include="on_machine\" />
+    <Folder Include="on_machine\.svn\" />
+    <Folder Include="on_machine\.svn\prop-base\" />
+    <Folder Include="on_machine\.svn\text-base\" />
+    <Folder Include="scripts\" />
+    <Folder Include="ss_remove\" />
+    <Folder Include="ss_remove\.svn\" />
+    <Folder Include="ss_remove\.svn\prop-base\" />
+    <Folder Include="ss_remove\.svn\text-base\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="data\.svn\all-wcprops" />
+    <Content Include="data\.svn\entries" />
+    <Content Include="data\shorteners\.svn\all-wcprops" />
+    <Content Include="data\shorteners\.svn\entries" />
+    <Content Include="data\shorteners\.svn\prop-base\checklist.py.svn-base" />
+    <Content Include="data\shorteners\.svn\prop-base\processurls.py.svn-base" />
+    <Content Include="data\shorteners\.svn\prop-base\Sites2.txt.ods.svn-base" />
+    <Content Include="data\shorteners\.svn\text-base\checklist.py.svn-base" />
+    <Content Include="data\shorteners\.svn\text-base\goodurls.txt.svn-base" />
+    <Content Include="data\shorteners\.svn\text-base\processedurls.txt.svn-base" />
+    <Content Include="data\shorteners\.svn\text-base\processurls.py.svn-base" />
+    <Content Include="data\shorteners\.svn\text-base\redirectedurls.txt.svn-base" />
+    <Content Include="data\shorteners\.svn\text-base\shortUrls.txt.svn-base" />
+    <Content Include="data\shorteners\.svn\text-base\sites.txt.svn-base" />
+    <Content Include="data\shorteners\.svn\text-base\Sites2.txt.ods.svn-base" />
+    <Content Include="data\shorteners\.svn\text-base\timedouturls.txt.svn-base" />
+    <Content Include="data\shorteners\.svn\text-base\tweetUrls.txt.svn-base" />
+    <Content Include="data\shorteners\.svn\text-base\urls.txt.svn-base" />
+    <Content Include="data\shorteners\goodurls.txt" />
+    <Content Include="data\shorteners\processedurls.txt" />
+    <Content Include="data\shorteners\redirectedurls.txt" />
+    <Content Include="data\shorteners\shortUrls.txt" />
+    <Content Include="data\shorteners\sites.txt" />
+    <Content Include="data\shorteners\Sites2.txt.ods" />
+    <Content Include="data\shorteners\timedouturls.txt" />
+    <Content Include="data\shorteners\tweetUrls.txt" />
+    <Content Include="data\shorteners\urls.txt" />
+    <Content Include="on_machine\.svn\all-wcprops" />
+    <Content Include="on_machine\.svn\entries" />
+    <Content Include="on_machine\.svn\prop-base\visit_site.py.svn-base" />
+    <Content Include="on_machine\.svn\text-base\visit_site.py.svn-base" />
+    <Content Include="scripts\copy_beginning_cookies.bat" />
+    <Content Include="scripts\copy_end_cookies.bat" />
+    <Content Include="scripts\driver.exe" />
+    <Content Include="scripts\screenshot-cmd.exe" />
+    <Content Include="scripts\screenshotcsharp.exe" />
+    <Content Include="scripts\shutdown.bat" />
+    <Content Include="scripts\startup.bat" />
+    <Content Include="scripts\start_driver.bat" />
+    <Content Include="scripts\start_driver.exe" />
+    <Content Include="scripts\url.txt" />
+    <Content Include="ss_remove\.svn\all-wcprops" />
+    <Content Include="ss_remove\.svn\entries" />
+    <Content Include="ss_remove\.svn\prop-base\ss_remove.py.svn-base" />
+    <Content Include="ss_remove\.svn\text-base\ss_remove.py.svn-base" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
+</Project>

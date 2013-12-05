@@ -1,0 +1,33 @@
+URL=http://www.amazon.com/gp/product/B00CRNW3ZI/ref=s9_al_gw_g107_ir03/175-3040516-2751649?pf_rd_m=ATVPDKIKX0DER&pf_rd_s=center-3&pf_rd_r=1R1JYHX2MA3F8SVXS01E&pf_rd_t=101&pf_rd_p=1568327682&pf_rd_i=507846
+
+I moved everything to Sites2.txt.ods  -Chase
+
+Http://2tu.us
+name=url
+type=input
+id=
+type=code
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Http://nsfw.in
+PROBLEM= does not work
+
+Http://nutshellurl.com
+name=starturl
+type=input
+id=nutresult
+Site=http://nutshellurl.com/8h5m
