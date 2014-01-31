@@ -114,13 +114,13 @@ def build_dictionary(_Directory):
 
 if __name__ == "__main__":
 
+   _Cluster = dict()
+
    if (len(sys.argv) == 2): 
 
       _Directory = sys.argv[1]
 
       _Dictionary = build_dictionary(_Directory)
-
-      _Cluster = dict()
 
       while True:
          try:
@@ -164,6 +164,8 @@ if __name__ == "__main__":
             _List = list()
 
             _List.append(_Image)
+
+            print _TrackedImages[_CurrentImage]
 
             if _TrackedImages[_CurrentImage] / len(_Image.m_pictures) > .7:
 
