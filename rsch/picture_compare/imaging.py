@@ -103,4 +103,4 @@ if __name__ == "__main__":
 
       _Directory = sys.argv[1]
 
-      build_dict(_Directory)
+      build_dictionary(_Directory)

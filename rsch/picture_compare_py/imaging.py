@@ -165,8 +165,6 @@ if __name__ == "__main__":
 
             _List.append(_Image)
 
-            print _TrackedImages[_CurrentImage]
-
             if _TrackedImages[_CurrentImage] / len(_Image.m_pictures) > .7:
 
                _List.append(_TrackedImages[_CurrentImage])
@@ -179,9 +177,13 @@ if __name__ == "__main__":
 
             for _Hash in _Image.m_pictures:
 
-               del _Dictionary[_Hash]
+               try:
+
+                  del _Dictionary[_Hash]
+
+               except:
+
+                  continue
 
             del _StoredPictures[_Image.m_name]
 
-   print _Cluster
-         
