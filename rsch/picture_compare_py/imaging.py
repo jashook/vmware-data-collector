@@ -32,6 +32,9 @@ _ImageNames = []
 
 def build_dictionary(_Directory):
 
+   COUNT = 0
+   COUNT1 = 1
+
    _Files = os.listdir(_Directory)
 
    for _File in _Files:
@@ -84,9 +87,15 @@ def build_dictionary(_Directory):
 
          try:
             
+            print _Hash
+
             _Hashes[_Hash]
 
+            print _Hashes[_Hash]
+
             _Hashes[_Hash].add(_InImage)
+
+            print _Hashes[_Hash]
 
          except:
 
@@ -140,7 +149,7 @@ if __name__ == "__main__":
          _TrackedImages = dict()
 
          for _Element in _Images:
-
+            
             _TrackedImages[_Element] = 0
 
          for _Hash in _Image.m_pictures:
@@ -163,19 +172,19 @@ if __name__ == "__main__":
 
             _List = list()
 
-            _List.append(_Image)
+            _List.append(_CurrentImage)
 
-            if _TrackedImages[_CurrentImage] / len(_Image.m_pictures) > .7:
+            if float(_TrackedImages[_CurrentImage]) / float(len(_CurrentImage.m_pictures)) > .7:
 
                _List.append(_TrackedImages[_CurrentImage])
 
-               _Cluster[_Image] = _List
+               _Cluster[_CurrentImage] = _List
 
             else:
 
-               _Cluster[_Image] = _List
+               _Cluster[_CurrentImage] = _List
 
-            for _Hash in _Image.m_pictures:
+            for _Hash in _CurrentImage.m_pictures:
 
                try:
 
@@ -185,5 +194,13 @@ if __name__ == "__main__":
 
                   continue
 
-            del _StoredPictures[_Image.m_name]
+            try:
+               
+               del _StoredPictures[_CurrentImage.m_name]
+
+            except:
+
+               continue
+
+   print _Cluster
 

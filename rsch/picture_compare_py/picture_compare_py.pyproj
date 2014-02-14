@@ -14,7 +14,7 @@
     <RootNamespace>picture_compare_py</RootNamespace>
     <IsWindowsApplication>False</IsWindowsApplication>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
-    <CommandLineArguments>C:\Users\Jarret\SkyDrive\Pictures\Pictures\Air\2011</CommandLineArguments>
+    <CommandLineArguments>..\picture_compare\Pictures</CommandLineArguments>
     <InterpreterPath />
     <InterpreterArguments>
     </InterpreterArguments>
