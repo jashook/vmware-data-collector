@@ -14,7 +14,6 @@
 ################################################################################
 
 import os
-import sys
 import hashlib
 from PIL import Image
 import re
@@ -185,6 +184,8 @@ class cluster:
          if (_NewSize[2] > _Width): _NewSize[2] = _Width
          
          if (_NewSize[3] > _Height): _NewSize[3] = _Height
+         
+         print _NewSize
          
          _NewPicture = _Image.crop(_NewSize)
          

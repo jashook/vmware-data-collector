@@ -14,16 +14,16 @@
 ################################################################################
 ################################################################################
 
-if __name__ == "__main__":
+import sys
+from cluster import *
 
-   _Cluster = dict()
+if __name__ == "__main__":
 
    if (len(sys.argv) == 2): 
 
       _Directory = sys.argv[1]
-
-      _Dictionary = build_dictionary(_Directory)
-
-
-   print _Cluster
+      
+      _Cluster = cluster(_Directory)
+      
+      _Cluster.build_dictionary()
 
