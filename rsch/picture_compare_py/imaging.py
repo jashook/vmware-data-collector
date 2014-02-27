@@ -27,3 +27,10 @@ if __name__ == "__main__":
       
       _Cluster.build_dictionary()
 
+      print "Dictionary size: " + str(_Cluster.dictionary_size())
+
+      _Cluster.build_cluster()
+
+      print "Unique Hashes in Dictionary " + str(_Cluster.unique_hash_count())
+
+      _Cluster.print_cluster
