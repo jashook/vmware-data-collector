@@ -113,7 +113,7 @@ class cluster:
          # For every index, go through and compare it with every
          # other index
          ######################################################
-         for _DescendingIndex in range(_Index, len(_Self.m_image_names) - 1):
+         for _DescendingIndex in range(_Index + 1, len(_Self.m_image_names)):
 
             ###################################################
             # If that picture is inside the large dictionary of
@@ -134,7 +134,7 @@ class cluster:
                # an image object, while _Self.m_image_names
                # contains a list of image names for that mapping
                ################################################
-               if _Self.m_stored_pictures[_Self.m_image_names[_DescendingIndex]] in _HObjects and _Picture in _HObjects:
+               if _Self.m_stored_pictures[_Self.m_image_names[_DescendingIndex]] in _HObjects:
                
                   _Count = 1
                   _SecondCount = 1
@@ -166,7 +166,7 @@ class cluster:
                         
                         break
                   
-                  if _FoundPictureMember.m_count > 0: _SecondCount = _FoundSetMember.m_count
+                  if _FoundPictureMember.m_count > 0: _SecondCount = _FoundPictureMember.m_count
                   
                   if _Count > _SecondCount: _Count = _SecondCount
                
@@ -248,7 +248,7 @@ class cluster:
          ######################################################
          # Default size
          ######################################################
-         _Offset = 40
+         _Offset = 20
          
          _SecondTime = False
          
@@ -321,12 +321,12 @@ class cluster:
                   _NewSet.add(hash_object(_InImage))
                   
                   _Self.m_hashes[_Hash] = _NewSet
-               
-               ###################################################
-               # Store all of the hashes of that image inside that
-               # image object
-               ###################################################
-               _InImage.m_pictures.append(_Hash)
+
+                  ###################################################
+                  # Store all of the hashes of that image inside that
+                  # image object
+                  ###################################################
+                  _InImage.m_pictures.append(_Hash)
             
             _TempWidth = _TempWidth + _Offset
             
