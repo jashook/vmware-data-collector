@@ -33,4 +33,4 @@ if __name__ == "__main__":
 
       print "Unique Hashes in Dictionary " + str(_Cluster.unique_hash_count())
 
-      _Cluster.print_cluster
+      _Cluster.print_cluster()

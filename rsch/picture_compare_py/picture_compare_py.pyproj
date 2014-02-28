@@ -29,6 +29,8 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="cluster.py" />
+    <Compile Include="hash_object.py" />
     <Compile Include="image.py" />
     <Compile Include="imaging.py" />
   </ItemGroup>

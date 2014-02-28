@@ -70,8 +70,8 @@ class cluster:
    def build_cluster(_Self): _Self._build_cluster()
    def cluster_size(_Self): return _Self._cluster_size()
    def dictionary_size(_Self): return _Self._dictionary_size()
-   def print_cluster(_Self): _print_cluster(_Self)
-   def print_dictionary(_Self): _print_dictionary(_Self)
+   def print_cluster(_Self): _Self._print_cluster()
+   def print_dictionary(_Self): _Self._print_dictionary()
    def unique_hash_count(_Self): return _Self._unique_hash_count()
    
    ################################################################################
@@ -123,13 +123,18 @@ class cluster:
             for _Hash in _Hashes:
 
                ################################################
+               # Create a list of images at the hash location
+               # Note that hash object contains the iamge and
+               # the count of times it was found
+               ################################################
+               _HObjects = [_Item.m_image for _Item in _Self.m_hashes[_Hash]]
+               
+               ################################################
                # _Self.m_stored_pictures maps an image's name to
                # an image object, while _Self.m_image_names
                # contains a list of image names for that mapping
                ################################################
-               _HObjects = [_Item.m_image for _Item in _Self.m_hashes[_Hash]]
-               
-               if _Self.m_stored_pictures[_Self.m_image_names[_DescendingIndex]] in _HObjects:
+               if _Self.m_stored_pictures[_Self.m_image_names[_DescendingIndex]] in _HObjects and _Picture in _HObjects:
                
                   _Count = 1
                   _SecondCount = 1
@@ -146,6 +151,9 @@ class cluster:
                         
                         break
 
+                  ################################################
+                  # Get the count of the picture
+                  ################################################
                   if _FoundSetMember.m_count > 0: _Count = _FoundSetMember.m_count
                   
                   _FoundPictureMember = None
@@ -173,6 +181,8 @@ class cluster:
       _Index = 0
 
       for _TrackedPair in _TrackedPairs:
+
+         print float(_TrackedPairs[_TrackedPair])
 
          if float(_TrackedPairs[_TrackedPair]) / float(_DictionarySize):
             _Self.m_cluster[_Index] = []
@@ -273,6 +283,8 @@ class cluster:
                      _HashMember = _Self.m_hashes[_Hash]
                      
                      _FoundSetMember = None
+
+                     _SetMember = None
                      
                      for _SetMember in _HashMember:
                      
@@ -281,14 +293,16 @@ class cluster:
                            _FoundSetMember = _SetMember
                      
                            break
-                     
+
                      _FoundSetMember.m_count += 1
                      
                      if _FoundSetMember not in _Self.m_multiple_hashes:
                      
-                        _Self.m_multiple_hashes[_FoundSetMember] = _SetMember
+                        _Self.m_multiple_hashes[_FoundSetMember] = _FoundSetMember
                      
-                     _Self.m_hashes[_Hash].update(_FoundSetMember)
+                     _HashMember.discard(_FoundSetMember)
+
+                     _HashMember.add(_FoundSetMember)
                   
                   else:
                      #############################################
@@ -375,13 +389,13 @@ class cluster:
 
    def _dictionary_size(_Self):
       
-      _Repeats = 0
+      _Count = 0
+
+      for _Hash in _Self.m_hashes:
+         for _Object in _Self.m_hashes[_Hash]:
+            _Count += _Object.m_count + 1
       
-      for _Repeat in _Self.m_multiple_hashes:
-         
-         _Repeats += _Repeat.m_count
-      
-      return _Repeats + len(_Self.m_hashes)
+      return _Count
 
    ###############################################################################
    ###############################################################################
@@ -397,7 +411,7 @@ class cluster:
    
       for _ClusterObject in _Self.m_cluster:
    
-         print _ClusterObject
+         print _Self.m_cluster[_ClusterObject]
 
    ###############################################################################
    ###############################################################################
@@ -408,6 +422,12 @@ class cluster:
    #
    ###############################################################################
    ###############################################################################
+
+   def _print_dictionary(_Self):
+
+      for _DictionaryObject in _Self.m_hashes:
+
+         print _Self.m_hashes[_DictionaryObject]
 
    ###############################################################################
    ###############################################################################
