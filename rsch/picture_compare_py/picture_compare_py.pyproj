@@ -14,7 +14,7 @@
     <RootNamespace>picture_compare_py</RootNamespace>
     <IsWindowsApplication>False</IsWindowsApplication>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
-    <CommandLineArguments>..\picture_compare\Pictures</CommandLineArguments>
+    <CommandLineArguments>C:\Users\Jarret\Documents\GitHub\vmware-data-collector\rsch\picture_compare_py\scrnsht-categorized\bank\</CommandLineArguments>
     <InterpreterPath />
     <InterpreterArguments>
     </InterpreterArguments>
