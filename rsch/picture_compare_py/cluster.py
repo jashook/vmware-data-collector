@@ -181,16 +181,56 @@ class cluster:
       _Index = 0
 
       for _TrackedPair in _TrackedPairs:
+         _FirstCount = 0
+         _SecondCount = 0
 
-         print float(_TrackedPairs[_TrackedPair]) / (len(_TrackedPair[0] + len(_TrackedPair[1])))
+         for _HashObject in _TrackedPair[0].m_pictures:
+            _HashMember = _Self.m_hashes[_HashObject]
+            
+            for _SetMember in _HashMember:
+                     
+               if _SetMember.m_image is _TrackedPair[0]:
+                  
+                  _FoundSetMember = _SetMember
+               
+               break
+            
+            _FirstCount += _FoundSetMember.m_count
+         
+         for _HashObject in _TrackedPair[1].m_pictures:
+            _HashMember = _Self.m_hashes[_HashObject]
+            
+            for _SetMember in _HashMember:
+                     
+               if _SetMember.m_image is _TrackedPair[1]:
+                  
+                  _FoundSetMember = _SetMember
+               
+               break
+            
+            _FirstCount += _FoundSetMember.m_count
+            
+         if _FirstCount + _SecondCount is 0: _FirstCount = 1
+
+         print float(_TrackedPairs[_TrackedPair]) / (_FirstCount + _SecondCount)
 
          _Appended = False
+         
+         _FoundTrackedPairOne = False
+         _FoundTrackedPairTwo = False
+         
+         for _ClusterIndex in _Self.m_cluster:
+            if _TrackedPair[0] in _Self.m_cluster[_ClusterIndex]:
+               _FoundTrackedPairOne = True
+            
+            elif _TrackedPair[1] in _Self.m_cluster:
+               _FoundTrackedPairTwo = True
 
-         if (float(_TrackedPairs[_TrackedPair]) / (len(_TrackedPair[0] + len(_TrackedPair[1]))) > .3):
+         if (float(_TrackedPairs[_TrackedPair]) / (len(_TrackedPair[0].m_pictures) + len(_TrackedPair[1].m_pictures)) > .3):
             for _ClusterIndex in _Self.m_cluster:
                if _TrackedPair[0] in _Self.m_cluster[_ClusterIndex] or _TrackedPair[1] in _Self.m_cluster[_ClusterIndex]:
-                  _Self.m_cluster[_ClusterIndex].append(_TrackedPair[0])
-                  _Self.m_cluster[_ClusterIndex].append(_TrackedPair[1])
+                  if _TrackedPair[0] and not _FoundTrackedPairOne: _Self.m_cluster[_ClusterIndex].append(_TrackedPair[0])
+                  if _TrackedPair[1] and not _FoundTrackedPairTwo: _Self.m_cluster[_ClusterIndex].append(_TrackedPair[1])
          
                   _Appended = True
          
@@ -200,6 +240,19 @@ class cluster:
                _Self.m_cluster[_Index].append(_TrackedPair[1])
 
             _Index += 1
+
+         else:
+            if not _FoundTrackedPairOne:
+               _Self.m_cluster[_Index] = []
+               _Self.m_cluster[_Index].append(_TrackedPair[0])
+
+               _Index += 1
+
+            if not _FoundTrackedPairTwo:
+               _Self.m_cluster[_Index] = []
+               _Self.m_cluster[_Index].append(_TrackedPair[1])
+
+               _Index += 1
 
    ###############################################################################
    ###############################################################################
@@ -396,7 +449,7 @@ class cluster:
       for _Hash in _Self.m_hashes:
          for _Object in _Self.m_hashes[_Hash]:
             _Count += _Object.m_count + 1
-      
+   
       return _Count
 
    ###############################################################################
@@ -413,7 +466,7 @@ class cluster:
    
       for _ClusterObject in _Self.m_cluster:
    
-         print _Self.m_cluster[_ClusterObject]
+         print [_Item.m_name for _Item in _Self.m_cluster[_ClusterObject]]
 
    ###############################################################################
    ###############################################################################
