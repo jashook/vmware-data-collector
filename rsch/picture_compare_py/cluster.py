@@ -46,7 +46,7 @@ class cluster:
       # Member Variables
       ######################################################
       
-      _Self.m_hashes = dict()
+      _Self.m_hashes = collections.defaultdict(lambda: set())
       
       _Self.m_multiple_hashes = dict()
 
@@ -182,12 +182,22 @@ class cluster:
 
       for _TrackedPair in _TrackedPairs:
 
-         print float(_TrackedPairs[_TrackedPair])
+         print float(_TrackedPairs[_TrackedPair]) / (len(_TrackedPair[0] + len(_TrackedPair[1])))
 
-         if float(_TrackedPairs[_TrackedPair]) / float(_DictionarySize):
-            _Self.m_cluster[_Index] = []
-            _Self.m_cluster[_Index].append(_TrackedPair[0])
-            _Self.m_cluster[_Index].append(_TrackedPair[1])
+         _Appended = False
+
+         if (float(_TrackedPairs[_TrackedPair]) / (len(_TrackedPair[0] + len(_TrackedPair[1]))) > .3):
+            for _ClusterIndex in _Self.m_cluster:
+               if _TrackedPair[0] in _Self.m_cluster[_ClusterIndex] or _TrackedPair[1] in _Self.m_cluster[_ClusterIndex]:
+                  _Self.m_cluster[_ClusterIndex].append(_TrackedPair[0])
+                  _Self.m_cluster[_ClusterIndex].append(_TrackedPair[1])
+         
+                  _Appended = True
+         
+            if not _Appended:
+               _Self.m_cluster[_Index] = []
+               _Self.m_cluster[_Index].append(_TrackedPair[0])
+               _Self.m_cluster[_Index].append(_TrackedPair[1])
 
             _Index += 1
 
@@ -268,15 +278,11 @@ class cluster:
                
                _Hash = hashlib.md5(_NewPicture.tostring()).hexdigest()
                
-               try:
-                  
-                  ################################################
-                  # Check if dictionary contains the hash value
-                  #
-                  # Note: not optimal
-                  ################################################
-                  _Self.m_hashes[_Hash]
-                  
+               ################################################
+               # Check if dictionary contains the hash value
+               ################################################
+               if len(_Self.m_hashes[_Hash]) is not 0:
+               
                   _HObjects = [_Item.m_image for _Item in _Self.m_hashes[_Hash]]
                   
                   if _InImage in _HObjects:
@@ -311,16 +317,12 @@ class cluster:
                      
                      _Self.m_hashes[_Hash].add(hash_object(_InImage))
                
-               except:
+               else:
                   ################################################
                   # Add a new set at the hash's location
                   ################################################
                   
-                  _NewSet = set()
-                  
-                  _NewSet.add(hash_object(_InImage))
-                  
-                  _Self.m_hashes[_Hash] = _NewSet
+                  _Self.m_hashes[_Hash].add(hash_object(_InImage))
 
                   ###################################################
                   # Store all of the hashes of that image inside that
@@ -456,7 +458,7 @@ class cluster:
          
                _Repeated = True
          
-         if len(_Hash) is 1 and not _Repeated:
+         if len(_Self.m_hashes[_Hash]) is 1 and not _Repeated:
 
             _Count += 1
 
