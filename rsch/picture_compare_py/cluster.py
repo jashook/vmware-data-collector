@@ -223,10 +223,10 @@ class cluster:
             if _TrackedPair[0] in _Self.m_cluster[_ClusterIndex]:
                _FoundTrackedPairOne = True
             
-            elif _TrackedPair[1] in _Self.m_cluster:
+            elif _TrackedPair[1] in _Self.m_cluster[_ClusterIndex]:
                _FoundTrackedPairTwo = True
 
-         if (float(_TrackedPairs[_TrackedPair]) / (len(_TrackedPair[0].m_pictures) + len(_TrackedPair[1].m_pictures)) > .3):
+         if (float(_TrackedPairs[_TrackedPair]) / (len(_TrackedPair[0].m_pictures) + len(_TrackedPair[1].m_pictures)) > .7):
             for _ClusterIndex in _Self.m_cluster:
                if _TrackedPair[0] in _Self.m_cluster[_ClusterIndex] or _TrackedPair[1] in _Self.m_cluster[_ClusterIndex]:
                   if _TrackedPair[0] and not _FoundTrackedPairOne: _Self.m_cluster[_ClusterIndex].append(_TrackedPair[0])
@@ -236,8 +236,8 @@ class cluster:
          
             if not _Appended:
                _Self.m_cluster[_Index] = []
-               _Self.m_cluster[_Index].append(_TrackedPair[0])
-               _Self.m_cluster[_Index].append(_TrackedPair[1])
+               if not _FoundTrackedPairOne: _Self.m_cluster[_Index].append(_TrackedPair[0])
+               if not _FoundTrackedPairTwo: _Self.m_cluster[_Index].append(_TrackedPair[1])
 
             _Index += 1
 
