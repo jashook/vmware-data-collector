@@ -57,6 +57,8 @@ class cluster:
       _Self.m_directory = _Directory
    
       _Self.m_cluster = dict()
+   
+      _Self.m_magic_number = .5
 
       ######################################################
       # End of init
@@ -226,7 +228,7 @@ class cluster:
             elif _TrackedPair[1] in _Self.m_cluster[_ClusterIndex]:
                _FoundTrackedPairTwo = True
 
-         if (float(_TrackedPairs[_TrackedPair]) / (len(_TrackedPair[0].m_pictures) + len(_TrackedPair[1].m_pictures)) > .7):
+         if (float(_TrackedPairs[_TrackedPair]) / (len(_TrackedPair[0].m_pictures) + len(_TrackedPair[1].m_pictures)) > _Self.m_magic_number):
             for _ClusterIndex in _Self.m_cluster:
                if _TrackedPair[0] in _Self.m_cluster[_ClusterIndex] or _TrackedPair[1] in _Self.m_cluster[_ClusterIndex]:
                   if _TrackedPair[0] and not _FoundTrackedPairOne: _Self.m_cluster[_ClusterIndex].append(_TrackedPair[0])
