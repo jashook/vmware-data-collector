@@ -58,7 +58,7 @@ class cluster:
    
       _Self.m_cluster = dict()
    
-      _Self.m_magic_number = .5
+      _Self.m_magic_number = .4
 
       ######################################################
       # End of init
