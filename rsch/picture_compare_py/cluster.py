@@ -214,7 +214,7 @@ class cluster:
             
          if _FirstCount + _SecondCount is 0: _FirstCount = 1
 
-         print float(_TrackedPairs[_TrackedPair]) / (_FirstCount + _SecondCount)
+         #print float(_TrackedPairs[_TrackedPair]) / (_FirstCount + _SecondCount)
 
          _Appended = False
          
@@ -466,9 +466,18 @@ class cluster:
    
    def _print_cluster(_Self):
    
+      _Cluster = []
+   
       for _ClusterObject in _Self.m_cluster:
    
-         print [_Item.m_name for _Item in _Self.m_cluster[_ClusterObject]]
+         _Cluster.append([_Item.m_name for _Item in _Self.m_cluster[_ClusterObject]])
+
+
+      _Cluster.sort()
+      
+      for _ClusterObject in _Cluster:
+         
+         print _ClusterObject
 
    ###############################################################################
    ###############################################################################
