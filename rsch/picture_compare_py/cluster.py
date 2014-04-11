@@ -240,34 +240,30 @@ class cluster:
             _Appended = False
             
             if _FoundTrackedPairOne is -1 and _FoundTrackedPairTwo is not -1:
-               for _ClusterIndex in _Self.m_cluster:
-                  if _TrackedPair[0] in _Self.m_cluster[_ClusterIndex] or _TrackedPair[1] in _Self.m_cluster[_ClusterIndex]:
-                     _Self.m_cluster[_ClusterIndex].append(_TrackedPair[0])
-                     
-                     _Appended = True
+               _Self.m_cluster[_FoundTrackedPairTwo].append(_TrackedPair[0])
+                  
+               _Appended = True
                   
             if _FoundTrackedPairTwo is -1 and _FoundTrackedPairOne is not -1:
-               for _ClusterIndex in _Self.m_cluster:
-                  if _TrackedPair[0] in _Self.m_cluster[_ClusterIndex] or _TrackedPair[1] in _Self.m_cluster[_ClusterIndex]:
-                     _Self.m_cluster[_ClusterIndex].append(_TrackedPair[0])
-                     
-                     _Appended = True
+               _Self.m_cluster[_FoundTrackedPairOne].append(_TrackedPair[1])
+                  
+               _Appended = True
                   
             if not _Appended:
                _Self.m_cluster[_Index] = []
-               if not _FoundTrackedPairOne: _Self.m_cluster[_Index].append(_TrackedPair[0])
-               if not _FoundTrackedPairTwo: _Self.m_cluster[_Index].append(_TrackedPair[1])
+               _Self.m_cluster[_Index].append(_TrackedPair[0])
+               _Self.m_cluster[_Index].append(_TrackedPair[1])
 
                _Index += 1
 
          else:
-            if not _FoundTrackedPairOne:
+            if _FoundTrackedPairOne is -1:
                _Self.m_cluster[_Index] = []
                _Self.m_cluster[_Index].append(_TrackedPair[0])
 
                _Index += 1
 
-            if not _FoundTrackedPairTwo:
+            if _FoundTrackedPairTwo is -1:
                _Self.m_cluster[_Index] = []
                _Self.m_cluster[_Index].append(_TrackedPair[1])
 
