@@ -28,6 +28,8 @@ if __name__ == "__main__":
       _Cluster.build_dictionary()
 
       print "Dictionary size: " + str(_Cluster.dictionary_size())
+      
+      #_Cluster.print_dictionary()
 
       _Cluster.build_cluster()
 
