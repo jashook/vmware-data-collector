@@ -16,6 +16,7 @@
 
 import os
 import hashlib
+import csv
 from PIL import Image
 import re
 import collections
@@ -576,6 +577,34 @@ class cluster:
 
       return _Count
 
+   ###############################################################################
+   ###############################################################################
+   ## Function: _write_cluster (cluster)
+   ##
+   ## Arguments: None
+   ## Returns: None
+   #
+   ###############################################################################
+   ###############################################################################
+   
+   def _write_cluster(_Self):
+   
+      _Cluster = []
+   
+      for _ClusterObject in _Self.m_cluster:
+   
+         _Cluster.append([_Item.m_name for _Item in _Self.m_cluster[_ClusterObject]])
+
+
+      _Cluster.sort()
+      
+      _Outputfile  = open('output.csv', "wb")
+      _Writer = csv.writer(_Outputfile)
+
+      for _ClusterRow in _Cluster:
+         
+
+         _Writer.writerow(_ClusterRow)
 
 ################################################################################
 ################################################################################
