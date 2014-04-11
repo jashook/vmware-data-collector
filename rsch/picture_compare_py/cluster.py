@@ -224,12 +224,17 @@ class cluster:
          _FoundTrackedPairOne = -1
          _FoundTrackedPairTwo = -1
          
-         for _ClusterKey, _ClusterIndex in enumerate(_Self.m_cluster):
-            if _TrackedPair[0] in _Self.m_cluster[_ClusterKey]:
-               _FoundTrackedPairOne = _ClusterIndex
+         try:
+            for _ClusterKey, _ClusterIndex in enumerate(_Self.m_cluster):
+               if _TrackedPair[0] in _Self.m_cluster[_ClusterKey]:
+                  _FoundTrackedPairOne = _ClusterIndex
             
-            elif _TrackedPair[1] in _Self.m_cluster[_ClusterKey]:
-               _FoundTrackedPairTwo = _ClusterIndex
+               elif _TrackedPair[1] in _Self.m_cluster[_ClusterKey]:
+                  _FoundTrackedPairTwo = _ClusterIndex
+
+         except KeyError:
+         
+            pass
 
          if (float(_TrackedPairs[_TrackedPair]) / (_TrackedPair[0].m_picture_size + _TrackedPair[1].m_picture_size) > _Self.m_magic_number):
             print _TrackedPair[0].m_name + " " + _TrackedPair[1].m_name
@@ -248,8 +253,34 @@ class cluster:
                _Self.m_cluster[_FoundTrackedPairOne].append(_TrackedPair[1])
                   
                _Appended = True
+            
+            if _FoundTrackedPairTwo is not -1 and _FoundTrackedPairOne is not -1:
+               _SmallerPair = 0
+               _Smaller = len(_Self.m_cluster[_FoundTrackedPairOne])
+               
+               if len(_Self.m_cluster[_FoundTrackedPairTwo]) < _Smaller: _SmallerPair = 1
+               
+               if _SmallerPair == 0:
+                  _ToBeInserted = _Self.m_cluster[_FoundTrackedPairOne]
                   
-            if not _Appended:
+                  for _TempClust in _ToBeInserted:
+                     _Self.m_cluster[_FoundTrackedPairTwo].append(_TempClust)
+               
+                  _Self.m_cluster[_FoundTrackedPairOne] = None
+               
+                  del _Self.m_cluster[_FoundTrackedPairOne]
+                  
+               else:
+                  _ToBeInserted = _Self.m_cluster[_FoundTrackedPairTwo]
+                  
+                  for _TempClust in _ToBeInserted:
+                     _Self.m_cluster[_FoundTrackedPairOne].append(_TempClust)
+            
+                  _Self.m_cluster[_FoundTrackedPairTwo] = None
+            
+                  del _Self.m_cluster[_FoundTrackedPairTwo]
+            
+            if _FoundTrackedPairOne is -1 and _FoundTrackedPairTwo is -1:
                _Self.m_cluster[_Index] = []
                _Self.m_cluster[_Index].append(_TrackedPair[0])
                _Self.m_cluster[_Index].append(_TrackedPair[1])
