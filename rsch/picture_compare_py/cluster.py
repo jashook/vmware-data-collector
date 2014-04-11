@@ -601,9 +601,9 @@ class cluster:
       _Outputfile  = open('output.csv', "wb")
       _Writer = csv.writer(_Outputfile)
 
-      for _ClusterRow in _Cluster:
-         
+      _Writer.writerow(["A1","Layout_Cluster"])
 
+      for _ClusterRow in _Cluster:
          _Writer.writerow(_ClusterRow)
 
 ################################################################################
