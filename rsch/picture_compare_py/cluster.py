@@ -237,10 +237,6 @@ class cluster:
             pass
 
          if (float(_TrackedPairs[_TrackedPair]) / (_TrackedPair[0].m_picture_size + _TrackedPair[1].m_picture_size) > _Self.m_magic_number):
-            print _TrackedPair[0].m_name + " " + _TrackedPair[1].m_name
-            print _TrackedPairs[_TrackedPair]
-            print _TrackedPair[0].m_picture_size + _TrackedPair[1].m_picture_size
-            print float(_TrackedPairs[_TrackedPair]) / (_TrackedPair[0].m_picture_size + _TrackedPair[1].m_picture_size)
          
             _Appended = False
             
