@@ -58,7 +58,7 @@ class cluster:
    
       _Self.m_cluster = dict()
    
-      _Self.m_magic_number = .4
+      _Self.m_magic_number = .75
 
       ######################################################
       # End of init
@@ -241,12 +241,12 @@ class cluster:
             _Appended = False
             
             if _FoundTrackedPairOne is -1 and _FoundTrackedPairTwo is not -1:
-               _Self.m_cluster[_FoundTrackedPairTwo].append(_TrackedPair[0])
+               _Self.m_cluster[_FoundTrackedPairTwo].add(_TrackedPair[0])
                   
                _Appended = True
                   
             if _FoundTrackedPairTwo is -1 and _FoundTrackedPairOne is not -1:
-               _Self.m_cluster[_FoundTrackedPairOne].append(_TrackedPair[1])
+               _Self.m_cluster[_FoundTrackedPairOne].add(_TrackedPair[1])
                   
                _Appended = True
             
@@ -260,7 +260,7 @@ class cluster:
                   _ToBeInserted = _Self.m_cluster[_FoundTrackedPairOne]
                   
                   for _TempClust in _ToBeInserted:
-                     _Self.m_cluster[_FoundTrackedPairTwo].append(_TempClust)
+                     _Self.m_cluster[_FoundTrackedPairTwo].add(_TempClust)
                
                   _Self.m_cluster[_FoundTrackedPairOne] = None
                
@@ -270,29 +270,29 @@ class cluster:
                   _ToBeInserted = _Self.m_cluster[_FoundTrackedPairTwo]
                   
                   for _TempClust in _ToBeInserted:
-                     _Self.m_cluster[_FoundTrackedPairOne].append(_TempClust)
+                     _Self.m_cluster[_FoundTrackedPairOne].add(_TempClust)
             
                   _Self.m_cluster[_FoundTrackedPairTwo] = None
             
                   del _Self.m_cluster[_FoundTrackedPairTwo]
             
             if _FoundTrackedPairOne is -1 and _FoundTrackedPairTwo is -1:
-               _Self.m_cluster[_Index] = []
-               _Self.m_cluster[_Index].append(_TrackedPair[0])
-               _Self.m_cluster[_Index].append(_TrackedPair[1])
+               _Self.m_cluster[_Index] = set()
+               _Self.m_cluster[_Index].add(_TrackedPair[0])
+               _Self.m_cluster[_Index].add(_TrackedPair[1])
 
                _Index += 1
 
          else:
             if _FoundTrackedPairOne is -1:
-               _Self.m_cluster[_Index] = []
-               _Self.m_cluster[_Index].append(_TrackedPair[0])
+               _Self.m_cluster[_Index] = set()
+               _Self.m_cluster[_Index].add(_TrackedPair[0])
 
                _Index += 1
 
             if _FoundTrackedPairTwo is -1:
-               _Self.m_cluster[_Index] = []
-               _Self.m_cluster[_Index].append(_TrackedPair[1])
+               _Self.m_cluster[_Index] = set()
+               _Self.m_cluster[_Index].add(_TrackedPair[1])
 
                _Index += 1
 
