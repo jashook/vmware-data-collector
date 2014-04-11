@@ -225,12 +225,12 @@ class cluster:
          _FoundTrackedPairTwo = -1
          
          try:
-            for _ClusterKey, _ClusterIndex in enumerate(_Self.m_cluster):
+            for _ClusterKey in _Self.m_cluster:
                if _TrackedPair[0] in _Self.m_cluster[_ClusterKey]:
-                  _FoundTrackedPairOne = _ClusterIndex
+                  _FoundTrackedPairOne = _ClusterKey
             
                elif _TrackedPair[1] in _Self.m_cluster[_ClusterKey]:
-                  _FoundTrackedPairTwo = _ClusterIndex
+                  _FoundTrackedPairTwo = _ClusterKey
 
          except KeyError:
          

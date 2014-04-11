@@ -14,7 +14,7 @@
     <RootNamespace>picture_compare_py</RootNamespace>
     <IsWindowsApplication>False</IsWindowsApplication>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
-    <CommandLineArguments>C:\Users\Jarret\Source\Repos\vmware-data-collector\rsch\picture_compare_py\scrnsht-categorized\p-copy</CommandLineArguments>
+    <CommandLineArguments>C:\Users\Jarret\Source\Repos\vmware-date-collector\rsch\picture_compare_py\scrnsht-categorized\p-copy\</CommandLineArguments>
     <InterpreterPath />
     <InterpreterArguments>
     </InterpreterArguments>
