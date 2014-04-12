@@ -603,8 +603,13 @@ class cluster:
 
       _Writer.writerow(["A1","Layout_Cluster"])
 
+      _ClusterIndex = 0
+
       for _ClusterRow in _Cluster:
-         _Writer.writerow(_ClusterRow)
+         for _ClusterObject in _ClusterRow:
+            _Writer.writerow([_ClusterObject, str(_ClusterIndex)])
+
+         _ClusterIndex += 1
 
 ################################################################################
 ################################################################################
