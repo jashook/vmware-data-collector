@@ -6,7 +6,7 @@ require "fileutils"
 puts "Starting to update"
 
 def args_valid?
-   ARGV[0] && File.directory?(ARGV[0]) && File.directory?(ARGV[1])
+   ARGV[0] && ARGV[1] && File.directory?(ARGV[0]) && File.directory?(ARGV[1])
    
 end
 
