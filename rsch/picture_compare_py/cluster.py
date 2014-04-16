@@ -330,9 +330,16 @@ class cluster:
             _Directory = _Directory.replace("\\", "/")
    
          if _Debug is True: print _Directory + _File
+  
+         _Path = _Directory + _File
+
+         if os.path.islink(_Path): _Path = os.path.realpath(_Path)
+  
+         if os.path.isfile(_Path):
+            _Image = Image.open(_Path)
          
-         _Image = Image.open(_Directory + _File)
-         
+         else: continue
+
          ######################################################
          # image.py for class declaration
          ######################################################
