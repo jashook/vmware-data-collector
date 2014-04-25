@@ -49,6 +49,8 @@ class cluster:
       
       _Self.m_hashes = collections.defaultdict(lambda: set())
       
+      _Self.m_hash_images = collections.defaultdict(lambda: set())
+      
       _Self.m_multiple_hashes = dict()
 
       _Self.m_stored_pictures = dict()
@@ -386,9 +388,9 @@ class cluster:
                ################################################
                if len(_Self.m_hashes[_Hash]) is not 0:
                
-                  _HObjects = [_Item.m_image for _Item in _Self.m_hashes[_Hash]]
+                  #_HObjects = [_Item.m_image for _Item in _Self.m_hashes[_Hash]]
                   
-                  if _InImage in _HObjects:
+                  if _InImage in _Self.m_hash_images:
                      _HashMember = _Self.m_hashes[_Hash]
                      
                      _FoundSetMember = None
@@ -412,15 +414,23 @@ class cluster:
                         _Self.m_multiple_hashes[_FoundSetMember] = _FoundSetMember
                      
                      _HashMember.discard(_FoundSetMember)
+                     
+                     _Self.m_hash_images[_InImage].discard(_FoundSetMember)
 
                      _HashMember.add(_FoundSetMember)
+                     
+                     _Self.m_hash_images[_InImage].add(_FoundSetMember)
                   
                   else:
                      #############################################
                      # Add a new image at the hash's location
                      #############################################
                      
-                     _Self.m_hashes[_Hash].add(hash_object(_InImage))
+                     _Object = hash_object(_InImage)
+                     
+                     _Self.m_hashes[_Hash].add(_Object)
+                     
+                     _Self.m_hash_images[_InImage].add(_Object)
             
                      _InImage.m_picture_size += 1
             
@@ -432,6 +442,8 @@ class cluster:
                   ################################################
                   
                   _Self.m_hashes[_Hash].add(hash_object(_InImage))
+                  
+                  _Self.m_hash_images[_InImage].add(hash_object(_InImage))
 
                   ###################################################
                   # Store all of the hashes of that image inside that
